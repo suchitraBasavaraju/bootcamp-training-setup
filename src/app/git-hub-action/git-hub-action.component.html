@@ -45,3 +45,16 @@
     <button type="submit">Create Multiple Pair Repo</button>
   </form>
 </div>
+
+
+<div *ngIf="currentAction === 'deleteSingleRepo'">
+  <h2>Delete Single Repo</h2>
+  <p>Provide the repository name to be created. Eg1: temp</p>
+  <form (submit)="deleteRepo()">
+    <div>
+      <label>Repo Name</label>
+      <input type="text" [(ngModel)]="repoName" name="repoName" placeholder="Enter repo name">
+    </div>
+    <button type="submit">Delete Repo</button>
+  </form>
+</div>

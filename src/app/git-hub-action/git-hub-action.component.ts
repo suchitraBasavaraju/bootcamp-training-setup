@@ -34,7 +34,6 @@ export class GitHubActionComponent {
   async createPair() {
     try {
       console.log("Creating Single Repository", this.repoName)
-      console.log("****** Repo Name *****", this.repoName)
       const response = await this.createRepo(this.repoName);
       this.responseData = response.data; // Store response data
       console.log(this.responseData); // Display response in console (modify as needed)
@@ -66,4 +65,16 @@ export class GitHubActionComponent {
 
   }
 
+
+  async deleteRepo() {
+    console.log("Deleting Single Repository", this.repoName)
+    let url = `https://api.github.com/repos/${this.orgName}/${this.repoName}`;
+    console.log("URL",url)
+    const response = await axios.delete(url, {
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`,
+      }
+    });
+    return response;
+  }
 }
