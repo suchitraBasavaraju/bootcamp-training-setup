@@ -6,8 +6,42 @@
   <label>GitHub Access Token:</label>
   <input type="text" [(ngModel)]="accessToken" placeholder="Enter Access token generated from github">
 </div>
-<div>
-  <label>Repo Name</label>
-  <input type="text" [(ngModel)]="repoName" placeholder="Enter repo name">
+
+<h2>Actions:</h2>
+<ul>
+  <li><a href="#" (click)="setCurrentAction('createSingleRepo', $event)">Create Single Repo</a></li>
+  <li><a href="#" (click)="setCurrentAction('createMultiplePairRepo', $event)">Create Multiple PairRepo</a></li>
+  <li><a href="#" (click)="setCurrentAction('deleteSingleRepo', $event)">Delete Single Repo</a></li>
+</ul>
+
+
+<div *ngIf="currentAction === 'createSingleRepo'">
+  <h2>Create Single Repo</h2>
+  <p>Provide the repository name to be created. Eg1: started-code Eg: trainers</p>
+  <form (submit)="createPair()">
+    <div>
+      <label>Repo Name</label>
+      <input type="text" [(ngModel)]="repoName" name="repoName" placeholder="Enter repo name">
+    </div>
+    <button type="submit">Create Repo</button>
+  </form>
 </div>
-<button (click)="createPair()">Create Pair Repos</button>
+
+
+<div *ngIf="currentAction === 'createMultiplePairRepo'">
+  <h2>Create Multiple Pair Repo</h2>
+  <div>
+    <p>Provide the repoPrefix(Eg: pair) and count(Eg: 3) to be created. Eg1: pair-01,pair-02,pair-03.</p>
+    <p>Note: Dont enter - in the repoPrefix</p>
+  </div>
+  <form (submit)="createMultiplePairRepo()">
+    <div>
+      <label>Repo Details</label><br/>
+      <input type="text" [(ngModel)]="repoPrefix" name="repoName" placeholder="Enter repo name prefix"><br/>
+      <input type="number" [(ngModel)]="repoCount" name="repoCount"
+             placeholder="Enter Number of repository to be created">
+    </div>
+    <br/>
+    <button type="submit">Create Multiple Pair Repo</button>
+  </form>
+</div>
