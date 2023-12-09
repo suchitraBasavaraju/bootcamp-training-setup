@@ -1,0 +1,13 @@
+<div>
+  <label>Git Hub Organisation Name:</label>
+  <input type="text" [(ngModel)]="orgName" placeholder="Enter Github organisation name">
+</div>
+<div>
+  <label>GitHub Access Token:</label>
+  <input type="text" [(ngModel)]="accessToken" placeholder="Enter Access token generated from github">
+</div>
+<div>
+  <label>Repo Name</label>
+  <input type="text" [(ngModel)]="repoName" placeholder="Enter repo name">
+</div>
+<button (click)="createPair()">Create Pair Repos</button>
